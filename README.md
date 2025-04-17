@@ -40,13 +40,18 @@ Flexible Box 模型，通常被称为 flexbox，是一种一维的布局模型�
 
 # 基本概念
 
+![](/flex_concept.png)
+
 使用 Flex 布局的元素称为 **Flex 容器**（flex container），其直接子元素自动成为 **Flex 项目**（flex item）
 
 容器默认包含两根轴：
 
-- **主轴**（main axis）：水平方向，起点为 `main start`，终点为 `main end`
-
-- **交叉轴**（cross axis）：垂直方向，起点为 `cross start`，终点为 `cross end`
+- **主轴**（main axis）：由 `flex-direction` 定义
+  - 如果你选择了 `row` 或者 `row-reverse`，你的主轴将沿着 **水平方向** 延伸。
+  - 如果你选择了 `column` 或者 `column-reverse` ，你的主轴将沿着 **垂直方向** 延伸。
+  - 起点为 `main start`，终点为 `main end`
+- **交叉轴**（cross axis）：垂直于主轴
+  - 起点为 `cross start`，终点为 `cross end`
 
 项目默认沿主轴排列，占据的主轴空间称为 `main size`，交叉轴空间称为 `cross size`。
 
