@@ -40,7 +40,7 @@ Flexible Box 模型，通常被称为 flexbox，是一种一维的布局模型�
 
 # 基本概念
 
-![](/flex_concept.png)
+![](./public/flex_concept.png)
 
 使用 Flex 布局的元素称为 **Flex 容器**（flex container），其直接子元素自动成为 **Flex 项目**（flex item）
 
