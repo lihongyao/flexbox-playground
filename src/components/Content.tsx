@@ -63,7 +63,7 @@ export default memo(function Content() {
   };
 
   return (
-    <main className="bg-white mx-4 rounded-md border border-gray-400 p-4 flex flex-col lg:flex-row gap-10 text-sm md:text-base lg:text-lg ">
+    <main className="bg-white mx-4 rounded-md border border-gray-400 p-4 flex flex-col lg:flex-row gap-10 text-sm  lg:text-base ">
       <Snackbar anchorOrigin={{ vertical: "top", horizontal: "center" }} open={!!tips} autoHideDuration={1500} onClose={() => setTips("")}>
         <Alert variant="filled" severity={"info"}>
           {tips}
@@ -73,12 +73,12 @@ export default memo(function Content() {
       <div className="flex-1 flex  justify-around flex-wrap md:flex-nowrap gap-2 ">
         {kContainerProps.map((item) => (
           <div key={item.key} className="flex-1 min-w-0">
-            <h1 className=" font-[600] h-14  ">{item.name}</h1>
+            <h1 className=" font-[600] h-14 break-words">{item.name}</h1>
             <div className="space-y-2 mt-4">
               {item.values.map((value) => (
                 <div
                   key={value}
-                  className={clsx(" border border-blue-400 px-2 rounded-sm cursor-pointer min-w-0 ", {
+                  className={clsx(" border border-blue-400 p-2 rounded-sm cursor-pointer min-w-0  break-words", {
                     "bg-blue-400 text-white": value === containerStyles[item.key as keyof CSSProperties],
                   })}
                   onClick={() => {
@@ -146,11 +146,31 @@ export default memo(function Content() {
               >
                 <div className="text-center truncate min-w-0">{item.id}</div>
                 <div className="space-y-2" style={{ fontFamily: "serif" }}>
-                  <input type="number" className="block w-full border-b border-gray-200 text-lg px-1" placeholder="order" onBlur={(e) => handleItemChange(index, "order", e.target.value)} />
-                  <input type="number" className="block w-full border-b border-gray-200 text-lg px-1" placeholder="flex-grow" onBlur={(e) => handleItemChange(index, "flexGrow", e.target.value)} />
-                  <input type="number" className="block w-full border-b border-gray-200 text-lg px-1" placeholder="flex-shrink" onBlur={(e) => handleItemChange(index, "flexShrink", e.target.value)} />
-                  <input type="text" className="block w-full border-b border-gray-200 text-lg px-1" placeholder="flex-basis" onBlur={(e) => handleItemChange(index, "flexBasis", e.target.value)} />
-                  <select className="block max-w-full" onChange={(e) => handleItemChange(index, "alignSelf", e.target.value)}>
+                  <input
+                    type="number"
+                    className="block w-full border-b border-gray-200 text-sm lg:text-base px-1"
+                    placeholder="order"
+                    onBlur={(e) => handleItemChange(index, "order", e.target.value)}
+                  />
+                  <input
+                    type="number"
+                    className="block w-full border-b border-gray-200 text-sm lg:text-base px-1"
+                    placeholder="flex-grow"
+                    onBlur={(e) => handleItemChange(index, "flexGrow", e.target.value)}
+                  />
+                  <input
+                    type="number"
+                    className="block w-full border-b border-gray-200 text-sm lg:text-base px-1"
+                    placeholder="flex-shrink"
+                    onBlur={(e) => handleItemChange(index, "flexShrink", e.target.value)}
+                  />
+                  <input
+                    type="text"
+                    className="block w-full border-b border-gray-200 text-sm lg:text-base px-1"
+                    placeholder="flex-basis"
+                    onBlur={(e) => handleItemChange(index, "flexBasis", e.target.value)}
+                  />
+                  <select className="block max-w-full text-sm lg:text-base" onChange={(e) => handleItemChange(index, "alignSelf", e.target.value)}>
                     <option value="auto">auto</option>
                     <option value="flex-start">flex-start</option>
                     <option value="flex-end">flex-end</option>
