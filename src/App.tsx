@@ -1,29 +1,18 @@
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import Content from "@/components/Content";
+import { useEffect } from "react";
+
 export default function App() {
+  useEffect(() => {
+    console.log("%c既然按了F12，为何不去GitHub顺便给个start", "color: #fff; background: #f40; font-size: 24px;");
+    console.log("%chttps://github.com/lihongyao/flexbox-playground", "font-size: 16px;");
+  }, []);
   return (
-    <div className="w-screen h-screen flex flex-col">
-      {/* 导航栏 */}
-      <header
-        className="h-20 bg-gray-200 flex justify-center items-center text-3xl mb-4"
-        style={{
-          fontFamily: "'Courier New', Courier, monospace",
-        }}
-      >
-        Flexbox&nbsp;演示站
-      </header>
-      <main className="flex-1 container border mx-auto rounded-md p-4">123</main>
-      <footer className="h-20 flex justify-center items-center">
-        <ul className="flex justify-center items-center space-x-4">
-          <li>
-            <a>GitHub</a>
-          </li>
-          <li>
-            <a>稀土掘金</a>
-          </li>
-          <li>
-            <a>Bug提交</a>
-          </li>
-        </ul>
-      </footer>
+    <div className="text-[#2D3748]  bg-gray-50 min-h-screen" style={{ fontFamily: "'Courier New', Courier, monospace" }}>
+      <Header />
+      <Content />
+      <Footer />
     </div>
   );
 }
