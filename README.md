@@ -1,10 +1,16 @@
-Flexbox 布局演示工具：https://lihongyao.github.io/flexbox-playground/
+![](./public/flex-playground.jpg)
+
+Flexbox 布局演示工具在线预览地址：https://lihongyao.github.io/flexbox-playground/
+
+喜欢的朋友，欢迎 Star，感谢 ～
 
 # 概述
 
 @See https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex
 
 网页布局（layout）是 CSS 的一个重点应用。
+
+![](./public/flex_01.gif)
 
 传统的 CSS 布局方案主要基于盒模型，通过以下三大属性实现：
 
@@ -57,23 +63,22 @@ Flexible Box 模型，通常被称为 flexbox，是一种一维的布局模型�
 
 # 容器的属性
 
-- **`flex-direction`**：控制子元素的排列方向
+- [**`flex-direction`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex-direction)：定义主轴的方向，控制子元素的排列方向
 
   - `row`（默认）：水平排列，从左到右
   - `row-reverse`：水平排列，从右到左
   - `column`：垂直排列，从上到下
   - `column-reverse`：垂直排列，从下到上
 
-- **`flex-wrap`**：控制是否换行
+- [**`flex-wrap`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex-wrap)：控制是否换行
 
   - `nowrap`（默认）：不换行（可能溢出）
   - `wrap`：换行，新行向下排列
   - `wrap-reverse`：换行，新行向上排列
 
-- **`flex-flow`**：`flex-direction` 和 `flex-wrap` 的简写  
-  例：`flex-flow: row wrap`
+- [**`flex-flow`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex-flow)：`flex-direction` 和 `flex-wrap` 的简写
 
-- **`justify-content`**：主轴对齐方式
+- [**`justify-content`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content)：主轴对齐方式
 
   - `flex-start`（默认）：左对齐
   - `flex-end`：右对齐
@@ -81,7 +86,7 @@ Flexible Box 模型，通常被称为 flexbox，是一种一维的布局模型�
   - `space-between`：两端对齐，子元素间距相等
   - `space-around`：子元素两侧间距相等（间距=边框间距 ×2）
 
-- **`align-items`**：交叉轴对齐方式
+- [**`align-items`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/align-items)：交叉轴对齐方式
 
   - `stretch`（默认）：拉伸填满容器高度
   - `flex-start`：顶部对齐
@@ -89,7 +94,7 @@ Flexible Box 模型，通常被称为 flexbox，是一种一维的布局模型�
   - `center`：垂直居中
   - `baseline`：按第一行文字基线对齐
 
-- **`align-content`**：多行子元素的对齐（单行无效）
+- [**`align-content`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/align-content)：多行子元素的对齐（单行无效）
   - `stretch`（默认）：拉伸填满交叉轴
   - `flex-start`：顶部对齐
   - `flex-end`：底部对齐
@@ -99,17 +104,17 @@ Flexible Box 模型，通常被称为 flexbox，是一种一维的布局模型�
 
 # 元素的属性
 
-- **`order`**：设置子元素的排列顺序。数值越小，越靠前显示，默认是 0。
+- [**`order`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/order)：设置子元素的排列顺序。数值越小，越靠前显示，默认是 0。
 
-- **`flex-grow`**：定义子元素在容器有多余空间时的放大比例。默认是 0，表示不放大；设置为 1 则表示可以占据多余空间。
+- [**`flex-grow`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex-grow)：定义子元素在容器有多余空间时的放大比例。默认是 0，表示不放大；设置为 1 则表示可以占据多余空间。
 
-- **`flex-shrink`**：定义子元素在空间不足时的缩小比例。默认是 1，表示可以缩小。如果设为 0，则不会缩小。
+- [**`flex-shrink`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex-shrink)：定义子元素在空间不足时的缩小比例。默认是 1，表示可以缩小。如果设为 0，则不会缩小。
 
-- **`flex-basis`**：指定子元素在分配空间之前占据的主轴空间（即它的初始宽度或高度）。默认是 auto，表示根据内容自动计算大小。
+- [**`flex-basis`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex-basis)：指定子元素在分配空间之前占据的主轴空间（即它的初始宽度或高度）。默认是 auto，表示根据内容自动计算大小。
 
-- **`flex`**：是 flex-grow、flex-shrink 和 flex-basis 的简写形式。默认值是 0 1 auto，即不放大、可以缩小、大小由内容决定。
+- [**`flex`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex)：是 flex-grow、flex-shrink 和 flex-basis 的简写形式。默认值是 0 1 auto，即不放大、可以缩小、大小由内容决定。
 
-- **align-self**：允许单个子元素设置与其他子元素不同的对齐方式，用于覆盖父容器的 align-items 设置。默认值是 auto，表示继承父级的对齐方式。如果没有继承，则表现为 stretch（拉伸填满）。
+- [**`align-self`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/align-self)：允许单个子元素设置与其他子元素不同的对齐方式，用于覆盖父容器的 align-items 设置。默认值是 auto，表示继承父级的对齐方式。如果没有继承，则表现为 stretch（拉伸填满）。
 
   可选值：
 
