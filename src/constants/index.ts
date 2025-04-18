@@ -63,7 +63,7 @@ export const kContainerProps = [
 
 export const kLinks = [
   { label: 'npm packages', url: 'https://www.npmjs.com/~lihongyao' },
-  { label: 'GitHub', url: 'https://github.com/lihongyao/' },
+  { label: 'GitHub', url: 'https://github.com/lihongyao/flexbox-playground' },
   { label: 'CSDN', url: 'https://blog.csdn.net/Hierarch_Lee/' },
   { label: '稀土掘金', url: 'https://juejin.cn/user/4441682709332919' },
 ]
