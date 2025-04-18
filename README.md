@@ -1,6 +1,6 @@
 ![](./public/flex-playground.jpg)
 
-Flexbox 布局演示工具在线预览地址：https://lihongyao.github.io/flexbox-playground/
+Flexbox 演练场在线预览：https://lihongyao.github.io/flexbox-playground/
 
 喜欢的朋友，欢迎 Star，感谢 ～
 
