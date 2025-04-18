@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { CSSProperties, memo } from "react";
-import { Alert, Button, Slider, Snackbar, Stack } from "@mui/material";
+import { Alert, Button, Slider, Snackbar, Stack, Tooltip } from "@mui/material";
 import { AddOutlined, RemoveOutlined } from "@mui/icons-material";
 import { useState } from "react";
 import { kContainerProps } from "@/constants";
@@ -73,24 +73,28 @@ export default memo(function Content() {
       <div className="flex-1 flex  justify-around flex-wrap md:flex-nowrap gap-2 ">
         {kContainerProps.map((item) => (
           <div key={item.key} className="flex-1 min-w-0">
-            <h1 className=" font-[600] h-14 break-words">{item.name}</h1>
+            <Tooltip title={item.title} placement="top-start">
+              <h1 className=" font-[600] h-14 break-words cursor-default ">{item.name}</h1>
+            </Tooltip>
             <div className="space-y-2 mt-4">
-              {item.values.map((value) => (
-                <div
-                  key={value}
-                  className={clsx(" border border-blue-400 p-2 rounded-sm cursor-pointer min-w-0  break-words", {
-                    "bg-blue-400 text-white": value === containerStyles[item.key as keyof CSSProperties],
-                  })}
-                  onClick={() => {
-                    if (value === containerStyles[item.key as keyof CSSProperties]) return;
-                    setContainerStyles((prev) => ({
-                      ...prev,
-                      [item.key]: value,
-                    }));
-                  }}
-                >
-                  {value}
-                </div>
+              {item.children.map(({ value, title }) => (
+                <Tooltip title={title} placement="top-start">
+                  <div
+                    key={value}
+                    className={clsx(" border border-blue-400 p-2 rounded-sm cursor-pointer min-w-0  break-words", {
+                      "bg-blue-400 text-white": value === containerStyles[item.key as keyof CSSProperties],
+                    })}
+                    onClick={() => {
+                      if (value === containerStyles[item.key as keyof CSSProperties]) return;
+                      setContainerStyles((prev) => ({
+                        ...prev,
+                        [item.key]: value,
+                      }));
+                    }}
+                  >
+                    {value}
+                  </div>
+                </Tooltip>
               ))}
             </div>
           </div>
@@ -102,10 +106,10 @@ export default memo(function Content() {
           <div className="flex items-center space-x-2">
             <span className="font-[500]">items count: {items.length}</span>
             <Stack direction={"row"} spacing={2}>
-              <Button size="small" variant="outlined" onClick={handleAdd}>
+              <Button size="small" variant="outlined" aria-label="add" onClick={handleAdd}>
                 <AddOutlined />
               </Button>
-              <Button size="small" variant="outlined" type="button" onClick={handleRemove}>
+              <Button size="small" variant="outlined" aria-label="remove" onClick={handleRemove}>
                 <RemoveOutlined />
               </Button>
             </Stack>
@@ -146,38 +150,48 @@ export default memo(function Content() {
               >
                 <div className="text-center truncate min-w-0">{item.id}</div>
                 <div className="space-y-2" style={{ fontFamily: "serif" }}>
-                  <input
-                    type="number"
-                    className="block w-full border-b border-gray-200 text-sm lg:text-base px-1"
-                    placeholder="order"
-                    onBlur={(e) => handleItemChange(index, "order", e.target.value)}
-                  />
-                  <input
-                    type="number"
-                    className="block w-full border-b border-gray-200 text-sm lg:text-base px-1"
-                    placeholder="flex-grow"
-                    onBlur={(e) => handleItemChange(index, "flexGrow", e.target.value)}
-                  />
-                  <input
-                    type="number"
-                    className="block w-full border-b border-gray-200 text-sm lg:text-base px-1"
-                    placeholder="flex-shrink"
-                    onBlur={(e) => handleItemChange(index, "flexShrink", e.target.value)}
-                  />
-                  <input
-                    type="text"
-                    className="block w-full border-b border-gray-200 text-sm lg:text-base px-1"
-                    placeholder="flex-basis"
-                    onBlur={(e) => handleItemChange(index, "flexBasis", e.target.value)}
-                  />
-                  <select className="block max-w-full text-sm lg:text-base" onChange={(e) => handleItemChange(index, "alignSelf", e.target.value)}>
-                    <option value="auto">auto</option>
-                    <option value="flex-start">flex-start</option>
-                    <option value="flex-end">flex-end</option>
-                    <option value="center">center</option>
-                    <option value="baseline">baseline</option>
-                    <option value="stretch">stretch</option>
-                  </select>
+                  <Tooltip title={"排列顺序，数值越小，越靠前显示。"} placement="top-start">
+                    <input
+                      type="number"
+                      className="block w-full border-b border-gray-200 text-sm lg:text-base px-1"
+                      placeholder="order"
+                      onBlur={(e) => handleItemChange(index, "order", e.target.value)}
+                    />
+                  </Tooltip>
+                  <Tooltip title={"放大比例"} placement="top-start">
+                    <input
+                      type="number"
+                      className="block w-full border-b border-gray-200 text-sm lg:text-base px-1"
+                      placeholder="flex-grow"
+                      onBlur={(e) => handleItemChange(index, "flexGrow", e.target.value)}
+                    />
+                  </Tooltip>
+                  <Tooltip title={"缩放比例"} placement="top-start">
+                    <input
+                      type="number"
+                      className="block w-full border-b border-gray-200 text-sm lg:text-base px-1"
+                      placeholder="flex-shrink"
+                      onBlur={(e) => handleItemChange(index, "flexShrink", e.target.value)}
+                    />
+                  </Tooltip>
+                  <Tooltip title={"元素占据主轴的空间，默认由内容决定"} placement="top-start">
+                    <input
+                      type="text"
+                      className="block w-full border-b border-gray-200 text-sm lg:text-base px-1"
+                      placeholder="flex-basis"
+                      onBlur={(e) => handleItemChange(index, "flexBasis", e.target.value)}
+                    />
+                  </Tooltip>
+                  <Tooltip title={"元素在交叉轴上的对齐方式"} placement="top-start">
+                    <select className="block max-w-full text-sm lg:text-base" onChange={(e) => handleItemChange(index, "alignSelf", e.target.value)}>
+                      <option value="auto">auto</option>
+                      <option value="flex-start">flex-start</option>
+                      <option value="flex-end">flex-end</option>
+                      <option value="center">center</option>
+                      <option value="baseline">baseline</option>
+                      <option value="stretch">stretch</option>
+                    </select>
+                  </Tooltip>
                 </div>
               </div>
             ))}
